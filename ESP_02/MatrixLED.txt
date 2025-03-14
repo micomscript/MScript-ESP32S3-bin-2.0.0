@@ -1,0 +1,315 @@
+##	OSL641501-ARA	########################################
+ƒAƒm[ƒh‘¤‚É’ïR
+
+T : Top - –³’n‘¤
+U : Under - •¶š‘¤
+
+					Column
+
+			‚s@‚s@‚t@‚s@‚t@‚t@‚t@‚t	„«	
+			‚W@‚R@‚W@‚T@‚P@‚V@‚Q@‚T	„«	
+										„«	
+		T:4	Z@Z@Z@Z@Z@Z@Z@Z	„«	
+										„«	
+		U:3	Z@Z@Z@Z@Z@Z@Z@Z	„«	
+										„«	
+		U:4	Z@Z@Z@Z@Z@Z@Z@Z	„«	
+	R									„«	
+	o	T:7	Z@Z@Z@Z@Z@Z@Z@Z	„«	
+	w									„«	
+		U:6	Z@Z@Z@Z@Z@Z@Z@Z	„«	
+										„«	
+		T:6	Z@Z@Z@Z@Z@Z@Z@Z	„«	
+										„«	
+		T:2@Z@Z@Z@Z@Z@Z@Z@Z	„«	
+										„«	
+		T:1@Z@Z@Z@Z@Z@Z@Z@Z	„«	
+
+
+
+ƒXƒNƒŠƒvƒg—á
+//////////////////////////////////////////////
+// TOM ƒsƒ“‚ÌŠ„‚è“–‚Ä(ã‹L‚Ì}‚ğQl)
+var tom_rows = [ 4, 5, 6, 7,16,17,18, 8 ]
+var tom_cols = [ 1, 2,42,41,39,38,37,36 ]
+
+var led1 = DotMatrix(tom_rows, tom_cols, 0)
+
+// SOL ƒsƒ“‚ÌŠ„‚è“–‚Ä
+var osl_rows = [ 3,46, 9,10,11,12,13,14 ]
+var osl_cols = [35, 0,45,48,47,21,20,19 ]
+
+var led2 = DotMatrix(osl_rows, osl_cols, 0)
+
+
+function off(){
+	led2.off()
+	led1.off()
+}
+
+function stop(){
+	led2.scroll(0)
+	led1.scroll(0)
+}
+
+function slow(){
+	led2.scroll(50)
+	led1.scroll(50)
+}
+
+function normal(){
+	led2.scroll(80)
+	led1.scroll(80)
+}
+
+function fast(){
+	led2.scroll(90)
+	led1.scroll(90)
+}
+
+function faster(){
+	led2.scroll(95)
+	led1.scroll(95)
+}
+
+function fastest(){
+	led2.scroll(100)
+	led1.scroll(100)
+}
+
+function welcome(){
+	led2.set(" WELCOME")
+	led1.set(" WELCOME")
+	led2.shiftL(8)
+
+	led2.scroll()
+	led1.scroll()
+}
+
+function character(){
+	led2.set("(OVO) ")
+	led1.set("(OVO) ")
+	led2.shiftL(8)
+
+	led2.scroll()
+	led1.scroll()
+}
+
+welcome()
+
+
+///////////////////////////////////////////////////////////
+// TOM ƒsƒ“‚ÌŠ„‚è“–‚Ä(ã‹L‚Ì}‚ğQl)
+var tom_rows = [ 4, 5, 6, 7,16,17,18, 8 ]
+var tom_cols = [ 1, 2,42,41,39,38,37,36 ]
+
+var led1 = DotMatrix(tom_rows, tom_cols, 0)
+
+// SOL ƒsƒ“‚ÌŠ„‚è“–‚Ä
+var osl_rows = [ 3,46, 9,10,11,12,13,14 ]
+var osl_cols = [35, 0,45,48,47,21,20,19 ]
+
+var led2 = DotMatrix(osl_rows, osl_cols, 0)
+
+var matrix = connectMatrix(led1, led2)
+
+var text = "WELCOME"
+function off(){
+	led2.off()
+	led1.off()
+}
+
+function stop(){
+	led2.scroll(0)
+	led1.scroll(0)
+}
+
+function slow(){
+	off()
+	led2.set(text)
+	led1.set(text)
+	led2.shiftL(8)
+
+	led2.scroll(50)
+	led1.scroll(50)
+}
+
+function normal(){
+	off()
+	led2.set(text)
+	led1.set(text)
+	led2.shiftL(8)
+
+	led2.scroll(80)
+	led1.scroll(80)
+}
+
+function fast(){
+	off()
+	led2.set(text)
+	led1.set(text)
+	led2.shiftL(8)
+
+	led2.scroll(90)
+	led1.scroll(90)
+}
+
+function faster(){
+	off()
+	led2.set(text)
+	led1.set(text)
+	led2.shiftL(8)
+
+	led2.scroll(95)
+	led1.scroll(95)
+}
+
+function fastest(){
+	off()
+	led2.set(text)
+	led1.set(text)
+	led2.shiftL(8)
+
+	led2.scroll(100)
+	led1.scroll(100)
+}
+
+function welcome(){
+	off()
+	text = " WELCOME"
+	led2.set(text)
+	led1.set(text)
+	led2.shiftL(8)
+
+	led2.scroll()
+	led1.scroll()
+}
+
+function character(){
+	off()
+	text = " ;;"
+	led2.set(text)
+	led1.set(text)
+	led2.shiftL(8)
+
+	led2.scroll()
+	led1.scroll()
+}
+
+welcome()
+///////////////////////////////////////////////////////////////////
+
+// TOM ƒsƒ“‚ÌŠ„‚è“–‚Ä(ã‹L‚Ì}‚ğQl)
+var tom_rows = [ 4, 5, 6, 7,16,17,18, 8 ]
+var tom_cols = [ 1, 2,42,41,39,38,37,36 ]
+
+var led1 = DotMatrix(tom_rows, tom_cols, 0)
+
+// SOL ƒsƒ“‚ÌŠ„‚è“–‚Ä
+var osl_rows = [ 3,46, 9,10,11,12,13,14 ]
+var osl_cols = [35, 0,45,48,47,21,20,19 ]
+
+var led2 = DotMatrix(osl_rows, osl_cols, 0)
+
+var _match = 0
+
+function off(){
+	led2.off()
+	led1.off()
+}
+
+function stop(){
+	led1.scroll(0)
+}
+
+function slow(){
+	led1.scroll(50)
+}
+
+function normal(){
+	led1.scroll(80)
+}
+
+function fast(){
+	led1.scroll(90)
+}
+
+function faster(){
+	led1.scroll(95)
+}
+
+function fastest(){
+	led1.scroll(100)
+}
+
+function welcome(){
+//	off()
+	led2.set(" WELCOME")
+	led1.set(" WELCOME")
+	led2.shiftL(8)
+
+	led2.scroll()
+	led1.scroll()
+}
+
+function character(){
+//	off()
+	led2.set(" (OVO)")
+	led1.set(" (OVO)")
+	led2.shiftL(8)
+
+	led2.scroll()
+	led1.scroll()
+}
+
+function matching(){
+	_match = 1 - _match
+	led2.matchSpeed(_match)
+	led1.matchSpeed(_match)
+}
+
+matching()
+welcome()
+
+/////////////////////////////////////////////////////////////
+
+// ƒsƒ“‚ÌŠ„‚è“–‚Ä(ã‹L‚Ì}‚ğQl)
+var led1_rows = [ 4, 5, 6, 7,16,17,18, 8 ]
+var led1_cols = [ 1, 2,42,41,39,38,37,36 ]
+
+var led1 = DotMatrix(led1_rows, led1_cols)
+
+// ƒsƒ“‚ÌŠ„‚è“–‚Ä
+var led2_rows = [ 3,46, 9,10,11,12,13,14 ]
+var led2_cols = [35, 0,45,48,47,21,20,19 ]
+
+var led2 = DotMatrix(led2_rows, led2_cols)
+
+var _text = " WELCOME"
+var _speed = 50
+led1.matchSpeed(1)
+
+function setText(text){
+	_text = text
+	led2.off()
+	led1.off()
+	led2.set(_text)
+	led1.set(_text)
+	led2.shiftL(8)
+
+	led2.scroll(_speed)
+	led1.scroll(_speed)
+}
+
+function setSpeed(speed){
+	_speed = speed
+	led1.scroll(_speed)
+}
+setText(_text)
+
+times(5){
+	var t
+	print("input > ")
+	t = input()
+	setText(t)
+}

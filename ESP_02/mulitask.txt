@@ -1,0 +1,137 @@
+#include <Arduino.h>
+
+// Task handles
+TaskHandle_t Task1;
+TaskHandle_t Task2;
+
+void setup() {
+  // Start serial communication
+  Serial.begin(115200);
+
+  // Create Task1
+  xTaskCreatePinnedToCore(
+    Task1code,   /* Task function. */
+    "Task1",     /* name of task. */
+    10000,       /* Stack size of task */
+    NULL,        /* parameter of the task */
+    1,           /* priority of the task */
+    &Task1,      /* Task handle to keep track of created task */
+    0);          /* Core where the task should run */
+
+  // Create Task2
+  xTaskCreatePinnedToCore(
+    Task2code,   /* Task function. */
+    "Task2",     /* name of task. */
+    10000,       /* Stack size of task */
+    NULL,        /* parameter of the task */
+    1,           /* priority of the task */
+    &Task2,      /* Task handle to keep track of created task */
+    1);          /* Core where the task should run */
+}
+
+// Task1 code
+void Task1code( void * pvParameters ) {
+  for (;;) {
+    Serial.println("Task1 is running");
+    vTaskDelay(1000 / portTICK_PERIOD_MS); // 1 second delay
+  }
+}
+
+// Task2 code
+void Task2code( void * pvParameters ) {
+  for (;;) {
+    Serial.println("Task2 is running");
+    vTaskDelay(2000 / portTICK_PERIOD_MS); // 2 seconds delay
+  }
+}
+
+void loop() {
+  // Empty. Tasks are running independently.
+}
+----------------------------------------------------------------------
+#include <Arduino.h>
+
+// Define LED pin
+const int ledPin = 2;
+
+// Task handle
+TaskHandle_t BlinkTaskHandle;
+
+// Task function
+void BlinkTask(void * pvParameters) {
+  pinMode(ledPin, OUTPUT);
+  while (1) {
+    digitalWrite(ledPin, HIGH); // Turn the LED on
+    vTaskDelay(1000 / portTICK_PERIOD_MS); // Delay for 1 second
+    digitalWrite(ledPin, LOW); // Turn the LED off
+    vTaskDelay(1000 / portTICK_PERIOD_MS); // Delay for 1 second
+  }
+}
+
+void setup() {
+  // Start serial communication
+  Serial.begin(115200);
+
+  // Create the BlinkTask
+  xTaskCreate(
+    BlinkTask,     // Task function
+    "BlinkTask",   // Name of the task (for debugging)
+    1000,          // Stack size (in words)
+    NULL,          // Task input parameter
+    1,             // Priority of the task
+    &BlinkTaskHandle // Task handle
+  );
+}
+
+void loop() {
+  // Empty. Tasks are running independently.
+}
+--------------------------------------------------------------------
+#include <Arduino.h>
+
+// Define LED pin
+const int ledPin = 2;
+
+// Task handle
+TaskHandle_t BlinkTaskHandle;
+
+// Task function
+void BlinkTask(void * pvParameters) {
+  pinMode(ledPin, OUTPUT);
+  while (1) {
+    digitalWrite(ledPin, HIGH); // Turn the LED on
+    vTaskDelay(1000 / portTICK_PERIOD_MS); // Delay for 1 second
+    digitalWrite(ledPin, LOW); // Turn the LED off
+    vTaskDelay(1000 / portTICK_PERIOD_MS); // Delay for 1 second
+  }
+}
+
+void setup() {
+  // Start serial communication
+  Serial.begin(115200);
+
+  // Create the BlinkTask
+  xTaskCreate(
+    BlinkTask,     // Task function
+    "BlinkTask",   // Name of the task (for debugging)
+    1000,          // Stack size (in words)
+    NULL,          // Task input parameter
+    1,             // Priority of the task
+    &BlinkTaskHandle // Task handle
+  );
+}
+
+void loop() {
+  // Suspend the task for 5 seconds
+  vTaskSuspend(BlinkTaskHandle);
+  Serial.println("Task suspended");
+  delay(5000);
+
+  // Resume the task
+  vTaskResume(BlinkTaskHandle);
+  Serial.println("Task resumed");
+
+  // Wait for 10 seconds before suspending again
+  delay(10000);
+}
+--------------------------------------------------------------
